@@ -16,13 +16,69 @@ const helpNavItems = [
   { key: 'faq', label: 'FAQ', icon: HelpCircle },
 ];
 
-function CoreFeaturesContent() {
+const coreFeatureSubs = [
+  { key: 'structurePrediction', label: '结构预测' },
+  { key: 'mmetrics', label: 'mmetrics' },
+  { key: 'affinityOptimization', label: '亲和力优化' },
+  { key: 'stabilityDevelopability', label: '稳定性与可开发性' },
+  { key: 'deNovoDesign', label: '从头设计' },
+];
+
+function StructurePredictionContent() {
   return (
     <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">核心功能</h2>
-      <p className="mt-3 text-muted-foreground">MoleculeOS 平台核心能力介绍</p>
+      <h2 className="text-2xl font-semibold tracking-tight text-white">结构预测</h2>
+      <p className="mt-3 text-muted-foreground">从序列到结构，为分子设计建立依据</p>
       <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
-        <p className="text-muted-foreground">核心功能介绍内容待补充。</p>
+        <p className="text-muted-foreground">结构预测功能介绍内容待补充。</p>
+      </div>
+    </div>
+  );
+}
+
+function MmetricsContent() {
+  return (
+    <div>
+      <h2 className="text-2xl font-semibold tracking-tight text-white">mmetrics</h2>
+      <p className="mt-3 text-muted-foreground">从序列到指标画像，为后续判断标出检查点</p>
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
+        <p className="text-muted-foreground">mmetrics 功能介绍内容待补充。</p>
+      </div>
+    </div>
+  );
+}
+
+function AffinityOptimizationContent() {
+  return (
+    <div>
+      <h2 className="text-2xl font-semibold tracking-tight text-white">亲和力优化</h2>
+      <p className="mt-3 text-muted-foreground">优化亲和力，让突变选择有据可依</p>
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
+        <p className="text-muted-foreground">亲和力优化功能介绍内容待补充。</p>
+      </div>
+    </div>
+  );
+}
+
+function StabilityDevelopabilityContent() {
+  return (
+    <div>
+      <h2 className="text-2xl font-semibold tracking-tight text-white">稳定性与可开发性</h2>
+      <p className="mt-3 text-muted-foreground">兼顾结合与可开发性，筛选更均衡的候选</p>
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
+        <p className="text-muted-foreground">稳定性与可开发性功能介绍内容待补充。</p>
+      </div>
+    </div>
+  );
+}
+
+function DeNovoDesignContent() {
+  return (
+    <div>
+      <h2 className="text-2xl font-semibold tracking-tight text-white">从头设计</h2>
+      <p className="mt-3 text-muted-foreground">围绕同一靶点，探索新的结合分子</p>
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
+        <p className="text-muted-foreground">从头设计功能介绍内容待补充。</p>
       </div>
     </div>
   );
@@ -80,6 +136,7 @@ export function HelpPage({ locale, kind = 'home' }: { locale: Locale; kind?: 'ho
   const docs = useTranslations('docsPage');
   const ui = useTranslations('manualUI');
   const [activeTab, setActiveTab] = useState('coreFeatures');
+  const [activeSub, setActiveSub] = useState('structurePrediction');
 
   const entries = [
     { key: 'getting-started', title: docs('quickStart'), description: ui('quickStartDescription'), Icon: Zap },
@@ -112,18 +169,43 @@ export function HelpPage({ locale, kind = 'home' }: { locale: Locale; kind?: 'ho
           <nav className="flex flex-col gap-1" aria-label="Help navigation">
             {helpNavItems.map((item) => {
               const Icon = item.icon;
+              const isCoreFeatures = item.key === 'coreFeatures';
+              const isActive = activeTab === item.key;
               return (
-                <button
-                  key={item.key}
-                  onClick={() => setActiveTab(item.key)}
-                  className={cn(
-                    'flex items-center gap-3 rounded-lg border-l-2 border-transparent px-3 py-2.5 text-sm text-left transition-colors hover:text-white',
-                    activeTab === item.key && 'border-accent bg-white/[0.05] text-white'
+                <div key={item.key}>
+                  <button
+                    onClick={() => {
+                      setActiveTab(item.key);
+                      if (isCoreFeatures && !activeSub) {
+                        setActiveSub('structurePrediction');
+                      }
+                    }}
+                    className={cn(
+                      'flex w-full items-center gap-3 rounded-lg border-l-2 border-transparent px-3 py-2.5 text-sm text-left transition-colors hover:text-white',
+                      isActive && 'border-accent bg-white/[0.05] text-white'
+                    )}
+                  >
+                    <Icon size={16} strokeWidth={1.5} />
+                    {item.label}
+                  </button>
+                  {/* 核心功能子项 */}
+                  {isCoreFeatures && isActive && (
+                    <div className="ml-4 mt-1 flex flex-col gap-0.5 border-l border-border pl-3">
+                      {coreFeatureSubs.map((sub) => (
+                        <button
+                          key={sub.key}
+                          onClick={() => setActiveSub(sub.key)}
+                          className={cn(
+                            'rounded-md px-3 py-2 text-left text-sm transition-colors hover:text-white',
+                            activeSub === sub.key ? 'text-white' : 'text-muted-foreground'
+                          )}
+                        >
+                          {sub.label}
+                        </button>
+                      ))}
+                    </div>
                   )}
-                >
-                  <Icon size={16} strokeWidth={1.5} />
-                  {item.label}
-                </button>
+                </div>
               );
             })}
           </nav>
@@ -134,7 +216,11 @@ export function HelpPage({ locale, kind = 'home' }: { locale: Locale; kind?: 'ho
 
         {/* 中间内容区 */}
         <main>
-          {activeTab === 'coreFeatures' && <CoreFeaturesContent />}
+          {activeTab === 'coreFeatures' && activeSub === 'structurePrediction' && <StructurePredictionContent />}
+          {activeTab === 'coreFeatures' && activeSub === 'mmetrics' && <MmetricsContent />}
+          {activeTab === 'coreFeatures' && activeSub === 'affinityOptimization' && <AffinityOptimizationContent />}
+          {activeTab === 'coreFeatures' && activeSub === 'stabilityDevelopability' && <StabilityDevelopabilityContent />}
+          {activeTab === 'coreFeatures' && activeSub === 'deNovoDesign' && <DeNovoDesignContent />}
           {activeTab === 'apiKey' && <ApiKeyContent />}
           {activeTab === 'mcpService' && <McpServiceContent />}
           {activeTab === 'faq' && <FaqContent locale={locale} />}
