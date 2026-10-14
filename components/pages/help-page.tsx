@@ -159,7 +159,7 @@ function UserCasesContent() {
         </div>
 
         {/* Step 1 */}
-        <CaseSection title="Step 1 · 界面分析">
+        <CaseSection title="界面分析：绘制禁区地图">
           <p className="text-sm leading-relaxed text-muted-foreground">
             对肽-受体界面计算埋藏面积与化学相互作用，识别出三个关键锚点残基，构成&ldquo;禁区地图&rdquo;——任何设计都不能破坏这些相互作用：
           </p>
@@ -183,7 +183,7 @@ function UserCasesContent() {
         </CaseSection>
 
         {/* Step 2 */}
-        <CaseSection title="Step 2 · 多轴突变打分">
+        <CaseSection title="多轴突变打分：序列轴 vs 结构轴">
           <p className="text-sm leading-relaxed text-muted-foreground">
             同时运行序列适应度模型与结合亲和力模型，对 741 个突变进行双轴扫描。两轴结果出现显著冲突：
           </p>
@@ -205,7 +205,7 @@ function UserCasesContent() {
         </CaseSection>
 
         {/* Step 3 */}
-        <CaseSection title="Step 3 · 结构预测验证">
+        <CaseSection title="结构预测验证：MMFold 三轴闭环">
           <p className="text-sm leading-relaxed text-muted-foreground">
             对野生型与 Y1M 变体分别提交 MMFold 复合物预测，用实验结构 7RGP 作为基准检验：
           </p>
@@ -226,7 +226,7 @@ function UserCasesContent() {
         </CaseSection>
 
         {/* Step 4 */}
-        <CaseSection title="Step 4 · 从头蛋白设计">
+        <CaseSection title="从头蛋白设计：探索新的结合分子">
           <p className="text-sm leading-relaxed text-muted-foreground">
             以受体 ECD 沟槽 11 个热点残基为约束，设计 60–100 残基的全新结合蛋白：
           </p>
@@ -275,7 +275,7 @@ function UserCasesContent() {
         </div>
 
         {/* Step 1 */}
-        <CaseSection title="Step 1 · 结构解析">
+        <CaseSection title="结构解析：发现变体选择性的原子基础">
           <p className="text-sm leading-relaxed text-muted-foreground">
             分析抗体-抗原界面，发现表位核心包含 3 个 CLDN18.1/18.2 变体差异位点，解释了 zolbetuximab 的变体选择性：
           </p>
@@ -295,7 +295,7 @@ function UserCasesContent() {
         </CaseSection>
 
         {/* Step 2 */}
-        <CaseSection title="Step 2 · AI 抗体预测">
+        <CaseSection title="AI 抗体预测：Fv 与复合物的高精度重建">
           <p className="text-sm leading-relaxed text-muted-foreground">
             仅输入 VH/VL 序列（117/113 aa），MMFold 独立完成 Fv 折叠与复合物组装，与实验 cryo-EM 结构直接比对：
           </p>
@@ -317,7 +317,7 @@ function UserCasesContent() {
         </CaseSection>
 
         {/* Step 3 */}
-        <CaseSection title="Step 3 · 亲和力打分">
+        <CaseSection title="亲和力打分：11,267 个突变的全景扫描">
           <p className="text-sm leading-relaxed text-muted-foreground">
             对复合物全部 11,267 个单点突变打分，4,809 个被预测为稳定化。两个关键发现：
           </p>
@@ -336,7 +336,7 @@ function UserCasesContent() {
         </CaseSection>
 
         {/* Step 4 */}
-        <CaseSection title="Step 4 · 交叉验证">
+        <CaseSection title="交叉验证：稳定性模型过滤高风险候选">
           <p className="text-sm leading-relaxed text-muted-foreground">
             用 Structural Stability 模型对亲和力 top 候选逐一检查，捕获&ldquo;亲和力模型看不到&rdquo;的结构风险：
           </p>
