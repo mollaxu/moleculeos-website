@@ -149,7 +149,6 @@ export function HelpPage({ locale, kind = 'home' }: { locale: Locale; kind?: 'ho
       <div className="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12">
         {/* 左侧导航 */}
         <aside className="lg:sticky lg:top-28 lg:self-start">
-          <h1 className="section-title mb-6">{t('title')}</h1>
           <nav className="flex flex-col gap-1" aria-label="Help navigation">
             {helpNavItems.map((item) => {
               const Icon = item.icon;

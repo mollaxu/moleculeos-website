@@ -245,6 +245,13 @@ git log --oneline --follow <文件路径>
   - 移除 help-page 中未使用的 `ArrowRight`、`manifest` 导入
   - 修复 testimonials-section 中未转义的双引号字符（JSX `"` → `&ldquo;` / `&rdquo;`）
 
+### 49. 帮助中心侧边导航移除标题
+
+- **文件位置**: `components/pages/help-page.tsx`
+- **修改内容**:
+  - 移除侧边导航上方的"帮助中心"大标题（`<h1 className="section-title mb-6">{t('title')}</h1>`）
+  - 侧边导航直接从导航项开始，视觉更简洁
+
 ---
 
 *文档最后更新: 2026-10-14*
