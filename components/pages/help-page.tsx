@@ -16,53 +16,13 @@ const helpNavItems = [
   { key: 'faq', label: 'FAQ', icon: HelpCircle },
 ];
 
-const capabilityItems = [
-  {
-    num: '01',
-    title: '结构预测',
-    subtitle: '已有序列，先建立可检查的结构假设',
-    desc: '输入 VEGF-A 与抗体序列，预测抗体结构及其与靶点的可能结合方式。结合局部与界面置信信息，查看潜在接触区域和需要重点检查的位置，为后续位点分析与候选设计建立结构依据。',
-  },
-  {
-    num: '02',
-    title: 'mmetrics',
-    subtitle: '已有序列，先建立可检查的性质画像',
-    desc: '输入抗体/蛋白序列，mmetrics 计算疏水性、电荷、聚集倾向、翻译后修饰等指标，并展开整体概览与位点级提示。结果用于建立序列层面的性质画像，定位值得进一步查看的位置，为后续结构分析、突变设计和多指标比较提供共同输入。',
-  },
-  {
-    num: '03',
-    title: '亲和力优化',
-    subtitle: '已有结合分子，哪些突变值得优先验证？',
-    desc: '从已有的抗 VEGF-A 抗体出发，结合结构分析与突变效应评估，在指定的改造范围内探索优化方案。获得带位点编号、候选替换、评分和推荐依据的突变清单，帮助确定下一轮实验的优先级。',
-  },
-  {
-    num: '04',
-    title: '稳定性与可开发性',
-    subtitle: '在结合目标之外，也把开发风险纳入选择。',
-    desc: '将稳定性与聚集倾向等可开发性指标纳入抗体优化，比较起始分子与改造候选的预测表现。识别潜在风险，查看结合能力与其他性质之间的取舍，为候选筛选和后续实验提供依据。',
-  },
-  {
-    num: '05',
-    title: '从头设计',
-    subtitle: '无需以已有抗体为起点，探索新的候选。',
-    desc: '以 VEGF-A 结构、目标结合区域和设计约束为起点，生成新的结合蛋白候选，并通过结构预测与界面评估进行筛选。获得候选序列、预测复合物和筛选记录，为先导发现提供可进入实验验证的设计方案。',
-  },
-];
-
 function CoreFeaturesContent() {
   return (
     <div>
       <h2 className="text-2xl font-semibold tracking-tight text-white">核心功能</h2>
-      <p className="mt-3 text-muted-foreground">围绕一个靶点，从理解分子到设计候选</p>
-      <div className="mt-10 flex flex-col gap-10">
-        {capabilityItems.map((item) => (
-          <div key={item.num} className="rounded-2xl border border-border bg-white/[0.02] p-8">
-            <span className="eyebrow">{item.num}</span>
-            <h3 className="mt-3 text-xl font-semibold text-white">{item.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{item.subtitle}</p>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
-          </div>
-        ))}
+      <p className="mt-3 text-muted-foreground">MoleculeOS 平台核心能力介绍</p>
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
+        <p className="text-muted-foreground">核心功能介绍内容待补充。</p>
       </div>
     </div>
   );
