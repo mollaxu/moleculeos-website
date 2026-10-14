@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { BookOpen, HelpCircle, Zap, History, Code } from 'lucide-react';
+import { BookOpen, HelpCircle, Zap, History, Code, Users } from 'lucide-react';
 import { localizeHref, type Locale } from '@/lib/site-config';
 import { DocsSearch } from '@/components/docs/docs-search';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 
 const helpNavItems = [
   { key: 'coreFeatures', label: '核心功能', icon: Zap },
+  { key: 'userCases', label: '用户案例', icon: Users },
   { key: 'apiKey', label: 'API key', icon: Code },
   { key: 'mcpService', label: 'MCP服务', icon: BookOpen },
   { key: 'faq', label: 'FAQ', icon: HelpCircle },
@@ -22,7 +23,6 @@ const coreFeatureSubs = [
   { key: 'affinityOptimization', label: '亲和力优化' },
   { key: 'stabilityDevelopability', label: '稳定性与可开发性' },
   { key: 'deNovoDesign', label: '从头设计' },
-  { key: 'userCases', label: '用户案例' },
 ];
 
 function StructurePredictionContent() {
@@ -234,7 +234,7 @@ export function HelpPage({ locale, kind = 'home' }: { locale: Locale; kind?: 'ho
           {activeTab === 'coreFeatures' && activeSub === 'affinityOptimization' && <AffinityOptimizationContent />}
           {activeTab === 'coreFeatures' && activeSub === 'stabilityDevelopability' && <StabilityDevelopabilityContent />}
           {activeTab === 'coreFeatures' && activeSub === 'deNovoDesign' && <DeNovoDesignContent />}
-          {activeTab === 'coreFeatures' && activeSub === 'userCases' && <UserCasesContent />}
+          {activeTab === 'userCases' && <UserCasesContent />}
           {activeTab === 'apiKey' && <ApiKeyContent />}
           {activeTab === 'mcpService' && <McpServiceContent />}
           {activeTab === 'faq' && <FaqContent locale={locale} />}
