@@ -97,7 +97,7 @@ function CaseStat({ label, value, unit }: { label: string; value: string; unit?:
 function CaseSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mt-8">
-      <h4 className="text-sm font-semibold uppercase tracking-wider text-white/60">{title}</h4>
+      <h4 className="text-sm font-semibold uppercase tracking-wider text-white">{title}</h4>
       <div className="mt-4">{children}</div>
     </div>
   );
@@ -369,85 +369,6 @@ function UserCasesContent() {
           </p>
         </div>
 
-        {/* 上一版 · 简洁卡片 */}
-        <div className="mt-16 border-t border-border pt-12">
-          <h3 className="text-lg font-semibold text-white">上一版</h3>
-          <p className="mt-1 text-sm text-muted-foreground">简洁卡片式呈现</p>
-
-          <div className="mt-8 flex flex-col gap-10">
-            {/* 案例 01 简洁版 */}
-            <div className="rounded-2xl border border-border bg-white/[0.02] p-8">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="eyebrow">01</span>
-                <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">GLP-1R</span>
-                <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Tirzepatide</span>
-              </div>
-              <h4 className="mt-4 text-lg font-semibold text-white">GLP-1 受体激动剂的多轴突变评估与从头设计</h4>
-              <p className="mt-1 text-sm text-muted-foreground">以已上市药物为基准，验证 AI 辅助药物设计的全链路能力</p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                GLP-1 受体是治疗 2 型糖尿病和肥胖的核心靶点，替尔泊肽（Tirzepatide）是 GIPR/GLP-1R 双受体激动剂。本案例以 PDB 7RGP（冷冻电镜，3.1 Å）为实验基准，在 MoleculeOS 平台上完成从界面分析、突变打分到从头蛋白设计的完整链路验证。
-              </p>
-              <div className="mt-6 flex flex-col gap-5">
-                {[
-                  { title: '界面分析：绘制禁区地图', desc: '对肽-受体界面计算埋藏面积与化学相互作用，发现 Tyr1 是 N 端最深锚定残基（176 Å²），Glu3 和 Asp9 构成盐桥网络，Phe6/Phe22 为疏水核心。这些位点被列为&ldquo;禁区&rdquo;——任何设计都不能破坏。' },
-                  { title: '多轴突变打分：序列轴 vs 结构轴', desc: '序列模型扫描 741 个突变，推荐 Y1M（+5.52）和 F22G（+3.78）为最高分；但结构模型（结合亲和力）显示这些突变会破坏锚定网络和疏水核心，ddG 为正值（去稳定）。交叉验证发现：两轴冲突时，以结构轴为准。' },
-                  { title: '结构预测验证：MMFold 三轴闭环', desc: '对野生型和 Y1M 变体分别做复合物结构预测。野生型 7TM RMSD 1.17 Å、ipTM 0.768；Y1M 变体 RMSD 1.20 Å、ipTM 0.753——三项指标均略降，与结构轴&ldquo;否决 Y1M&rdquo;的结论一致，形成三轴证据链闭环。' },
-                  { title: '从头蛋白设计：探索新的结合分子', desc: '以受体 ECD 沟槽 11 个热点残基为约束，设计 100 残基结合蛋白。预测界面规模（2254 Å²）超过替尔泊肽本身（1735 Å²），但仅命中 1/11 热点——说明单次生成未精准坐进沟槽中央，需多轮迭代优化。' },
-                ].map((step, i) => (
-                  <div key={i} className="flex gap-4">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/[0.06] text-xs font-medium text-muted-foreground">{i + 1}</span>
-                    <div>
-                      <p className="text-sm font-medium text-white">{step.title}</p>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{step.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-6 rounded-xl border border-border bg-white/[0.03] p-5">
-                <p className="text-sm font-medium text-white">核心结论</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  本案例展示了&ldquo;序列轴初筛 → 结构轴过滤 → 结构预测验证&rdquo;的三轴工作流。AI 打分是导航，实验是终点；单轴高分可能隐藏风险，多轴交集才是可实验的起点。
-                </p>
-              </div>
-            </div>
-
-            {/* 案例 02 简洁版 */}
-            <div className="rounded-2xl border border-border bg-white/[0.02] p-8">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="eyebrow">02</span>
-                <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">CLDN18.2</span>
-                <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Zolbetuximab</span>
-              </div>
-              <h4 className="mt-4 text-lg font-semibold text-white">胃癌靶点 CLDN18.2 的抗体预测与亲和力成熟</h4>
-              <p className="mt-1 text-sm text-muted-foreground">以 2024 年获批药物为案例，验证 AI 在抗体研发中的预测与设计能力</p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                CLDN18.2 是胃癌高表达靶点，zolbetuximab（Vyloy）于 2024 年获 FDA 批准。本案例以 PDB 9V32（cryo-EM，4.1 Å）为实验基准，在 MoleculeOS 平台上完成抗体结构预测、复合物建模和亲和力成熟突变筛选。
-              </p>
-              <div className="mt-6 flex flex-col gap-5">
-                {[
-                  { title: '结构解析：发现变体选择性的原子基础', desc: '分析抗体-抗原界面，发现表位核心包含 3 个 CLDN18.1/18.2 变体差异位点（Ala42、Asn45、Glu56）。Asn45 与轻链 CDR1 的双氢键网络是选择性的关键——在 CLDN18.1（Gln45）上无法形成。' },
-                  { title: 'AI 抗体预测：Fv 与复合物的高精度重建', desc: '仅输入 VH/VL 序列，MMFold 预测 Fv 结构：VH RMSD 0.84 Å、VL RMSD 0.94 Å，pLDDT 均为 95。复合物预测中，AI 自行&ldquo;长出来&rdquo;的界面覆盖了实验表位 11 个残基中的 9 个（82%），界面化学数量级一致。' },
-                  { title: '亲和力打分：11,267 个突变的全景扫描', desc: '对复合物全部单点突变打分，4,809 个被预测为稳定化。发现 Ala42 是&ldquo;万能热点&rdquo;——19/19 种替代均被预测增强结合；CDR 出现&ldquo;界面芳香化&rdquo;趋势，大芳香侧链填充界面空腔。' },
-                  { title: '交叉验证：稳定性模型过滤高风险候选', desc: '用结构稳定性模型对亲和力 top 候选逐一检查。VH CDR3 Asn103→Tyr 在亲和力维度排名靠前（−1.57），但稳定性模型显示该突变会破坏氢键枢纽、导致局部坍塌（−4.56），被否决。唯一双向强阳性：VH CDR3 Ser99→Leu（亲和力 −1.21 / 稳定性 +2.51，99% 分位）。' },
-                ].map((step, i) => (
-                  <div key={i} className="flex gap-4">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/[0.06] text-xs font-medium text-muted-foreground">{i + 1}</span>
-                    <div>
-                      <p className="text-sm font-medium text-white">{step.title}</p>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{step.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-6 rounded-xl border border-border bg-white/[0.03] p-5">
-                <p className="text-sm font-medium text-white">核心结论</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  本案例展示了&ldquo;预测验证设计&rdquo;的完整抗体研发链路。实验结构是 AI 的试金石；单维度高分是诱惑，多维度交集才是起点。最终仅将 Ser99→Leu 列为首选候选，其余高分项被降级或否决。
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
