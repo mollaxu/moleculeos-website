@@ -85,117 +85,289 @@ function DeNovoDesignContent() {
   );
 }
 
-const caseStudies = [
-  {
-    id: '01',
-    target: 'GLP-1R',
-    molecule: 'Tirzepatide',
-    title: 'GLP-1 受体激动剂的多轴突变评估与从头设计',
-    subtitle: '以已上市药物为基准，验证 AI 辅助药物设计的全链路能力',
-    background: 'GLP-1 受体是治疗 2 型糖尿病和肥胖的核心靶点，替尔泊肽（Tirzepatide）是 GIPR/GLP-1R 双受体激动剂。本案例以 PDB 7RGP（冷冻电镜，3.1 Å）为实验基准，在 MoleculeOS 平台上完成从界面分析、突变打分到从头蛋白设计的完整链路验证。',
-    highlights: [
-      { label: '实验基准', value: 'PDB 7RGP' },
-      { label: '靶点', value: 'GLP-1R' },
-      { label: '药物', value: 'Tirzepatide' },
-    ],
-    steps: [
-      {
-        title: '界面分析：绘制禁区地图',
-        desc: '对肽-受体界面计算埋藏面积与化学相互作用，发现 Tyr1 是 N 端最深锚定残基（176 Å²），Glu3 和 Asp9 构成盐桥网络，Phe6/Phe22 为疏水核心。这些位点被列为"禁区"——任何设计都不能破坏。',
-      },
-      {
-        title: '多轴突变打分：序列轴 vs 结构轴',
-        desc: '序列模型扫描 741 个突变，推荐 Y1M（+5.52）和 F22G（+3.78）为最高分；但结构模型（结合亲和力）显示这些突变会破坏锚定网络和疏水核心，ddG 为正值（去稳定）。交叉验证发现：两轴冲突时，以结构轴为准。',
-      },
-      {
-        title: '结构预测验证：MMFold 三轴闭环',
-        desc: '对野生型和 Y1M 变体分别做复合物结构预测。野生型 7TM RMSD 1.17 Å、ipTM 0.768；Y1M 变体 RMSD 1.20 Å、ipTM 0.753——三项指标均略降，与结构轴"否决 Y1M"的结论一致，形成三轴证据链闭环。',
-      },
-      {
-        title: '从头蛋白设计：探索新的结合分子',
-        desc: '以受体 ECD 沟槽 11 个热点残基为约束，设计 100 残基结合蛋白。预测界面规模（2254 Å²）超过替尔泊肽本身（1735 Å²），但仅命中 1/11 热点——说明单次生成未精准坐进沟槽中央，需多轮迭代优化。',
-      },
-    ],
-    takeaway: '本案例展示了"序列轴初筛 → 结构轴过滤 → 结构预测验证"的三轴工作流。AI 打分是导航，实验是终点；单轴高分可能隐藏风险，多轴交集才是可实验的起点。',
-  },
-  {
-    id: '02',
-    target: 'CLDN18.2',
-    molecule: 'Zolbetuximab',
-    title: '胃癌靶点 CLDN18.2 的抗体预测与亲和力成熟',
-    subtitle: '以 2024 年获批药物为案例，验证 AI 在抗体研发中的预测与设计能力',
-    background: 'CLDN18.2 是胃癌高表达靶点，zolbetuximab（Vyloy）于 2024 年获 FDA 批准。本案例以 PDB 9V32（cryo-EM，4.1 Å）为实验基准，在 MoleculeOS 平台上完成抗体结构预测、复合物建模和亲和力成熟突变筛选。',
-    highlights: [
-      { label: '实验基准', value: 'PDB 9V32' },
-      { label: '靶点', value: 'CLDN18.2' },
-      { label: '药物', value: 'Zolbetuximab' },
-    ],
-    steps: [
-      {
-        title: '结构解析：发现变体选择性的原子基础',
-        desc: '分析抗体-抗原界面，发现表位核心包含 3 个 CLDN18.1/18.2 变体差异位点（Ala42、Asn45、Glu56）。Asn45 与轻链 CDR1 的双氢键网络是选择性的关键——在 CLDN18.1（Gln45）上无法形成。',
-      },
-      {
-        title: 'AI 抗体预测：Fv 与复合物的高精度重建',
-        desc: '仅输入 VH/VL 序列，MMFold 预测 Fv 结构：VH RMSD 0.84 Å、VL RMSD 0.94 Å，pLDDT 均为 95。复合物预测中，AI 自行"长出来"的界面覆盖了实验表位 11 个残基中的 9 个（82%），界面化学数量级一致。',
-      },
-      {
-        title: '亲和力打分：11,267 个突变的全景扫描',
-        desc: '对复合物全部单点突变打分，4,809 个被预测为稳定化。发现 Ala42 是"万能热点"——19/19 种替代均被预测增强结合；CDR 出现"界面芳香化"趋势，大芳香侧链填充界面空腔。',
-      },
-      {
-        title: '交叉验证：稳定性模型过滤高风险候选',
-        desc: '用结构稳定性模型对亲和力 top 候选逐一检查。VH CDR3 Asn103→Tyr 在亲和力维度排名靠前（−1.57），但稳定性模型显示该突变会破坏氢键枢纽、导致局部坍塌（−4.56），被否决。唯一双向强阳性：VH CDR3 Ser99→Leu（亲和力 −1.21 / 稳定性 +2.51，99% 分位）。',
-      },
-    ],
-    takeaway: '本案例展示了"预测验证设计"的完整抗体研发链路。实验结构是 AI 的试金石；单维度高分是诱惑，多维度交集才是起点。最终仅将 Ser99→Leu 列为首选候选，其余高分项被降级或否决。',
-  },
-];
+function CaseStat({ label, value, unit }: { label: string; value: string; unit?: string }) {
+  return (
+    <div className="rounded-xl border border-border bg-white/[0.03] p-4">
+      <p className="text-xs text-muted-foreground">{label}</p>
+      <p className="mt-1 text-lg font-semibold text-white">{value}<span className="ml-1 text-sm font-normal text-muted-foreground">{unit}</span></p>
+    </div>
+  );
+}
+
+function CaseSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="mt-8">
+      <h4 className="text-sm font-semibold uppercase tracking-wider text-white/60">{title}</h4>
+      <div className="mt-4">{children}</div>
+    </div>
+  );
+}
+
+function DataTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
+  return (
+    <div className="overflow-x-auto rounded-xl border border-border">
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="border-b border-border bg-white/[0.03]">
+            {headers.map((h, i) => (
+              <th key={i} className="px-4 py-3 text-left text-xs font-medium text-muted-foreground">{h}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i} className="border-b border-border last:border-0">
+              {row.map((cell, j) => (
+                <td key={j} className="px-4 py-3 text-muted-foreground">{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+
 
 function UserCasesContent() {
   return (
     <div>
       <h2 className="text-2xl font-semibold tracking-tight text-white">用户案例</h2>
       <p className="mt-3 text-muted-foreground">真实研发场景中的 MOS 实践</p>
-      <div className="mt-10 flex flex-col gap-12">
-        {caseStudies.map((study) => (
-          <div key={study.id} className="rounded-2xl border border-border bg-white/[0.02] p-8">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="eyebrow">{study.id}</span>
-              <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">{study.target}</span>
-              <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">{study.molecule}</span>
-            </div>
-            <h3 className="mt-4 text-xl font-semibold text-white">{study.title}</h3>
-            <p className="mt-1 text-sm text-muted-foreground">{study.subtitle}</p>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{study.background}</p>
 
-            <div className="mt-6 flex flex-wrap gap-6">
-              {study.highlights.map((h) => (
-                <div key={h.label}>
-                  <p className="text-xs text-muted-foreground">{h.label}</p>
-                  <p className="mt-0.5 text-sm font-medium text-white">{h.value}</p>
-                </div>
-              ))}
-            </div>
+      {/* 案例 01 */}
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="eyebrow">01</span>
+          <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">GLP-1R</span>
+          <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Tirzepatide</span>
+        </div>
+        <h3 className="mt-4 text-xl font-semibold text-white">GLP-1 受体激动剂的多轴突变评估与从头设计</h3>
+        <p className="mt-1 text-sm text-muted-foreground">以已上市药物为基准，验证 AI 辅助药物设计的全链路能力</p>
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+          GLP-1 受体是治疗 2 型糖尿病和肥胖的核心靶点，替尔泊肽（Tirzepatide）是 GIPR/GLP-1R 双受体激动剂。
+          本案例以 PDB 7RGP（冷冻电镜，3.1 Å）为实验基准，在 MoleculeOS 平台上完成从界面分析、突变打分到从头蛋白设计的完整链路验证。
+        </p>
 
-            <div className="mt-8 flex flex-col gap-6">
-              {study.steps.map((step, i) => (
-                <div key={i} className="flex gap-4">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/[0.06] text-xs font-medium text-muted-foreground">{i + 1}</span>
-                  <div>
-                    <p className="text-sm font-medium text-white">{step.title}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+        {/* 关键数据 */}
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <CaseStat label="实验基准" value="PDB 7RGP" />
+          <CaseStat label="分辨率" value="3.1" unit="Å" />
+          <CaseStat label="肽段长度" value="39" unit="aa" />
+          <CaseStat label="界面埋藏面积" value="1,735" unit="Å²" />
+        </div>
 
-            <div className="mt-8 rounded-xl border border-border bg-white/[0.03] p-5">
-              <p className="text-sm font-medium text-white">核心结论</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{study.takeaway}</p>
+        {/* Step 1 */}
+        <CaseSection title="Step 1 · 界面分析">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            对肽-受体界面计算埋藏面积与化学相互作用，识别出三个关键锚点残基，构成&ldquo;禁区地图&rdquo;——任何设计都不能破坏这些相互作用：
+          </p>
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <div className="rounded-lg border border-border bg-white/[0.03] p-4">
+              <p className="text-xs text-muted-foreground">N 端锚定</p>
+              <p className="mt-1 text-sm font-medium text-white">Tyr1 ↔ Gln257</p>
+              <p className="mt-1 text-xs text-muted-foreground">氢键 · 2.6 Å · 埋藏 176 Å²</p>
+            </div>
+            <div className="rounded-lg border border-border bg-white/[0.03] p-4">
+              <p className="text-xs text-muted-foreground">盐桥网络</p>
+              <p className="mt-1 text-sm font-medium text-white">Glu3 ↔ Arg213</p>
+              <p className="mt-1 text-xs text-muted-foreground">盐桥 · 3.0–3.5 Å</p>
+            </div>
+            <div className="rounded-lg border border-border bg-white/[0.03] p-4">
+              <p className="text-xs text-muted-foreground">疏水核心</p>
+              <p className="mt-1 text-sm font-medium text-white">Phe6 / Phe22</p>
+              <p className="mt-1 text-xs text-muted-foreground">埋藏 130 / 104 Å²</p>
             </div>
           </div>
-        ))}
+        </CaseSection>
+
+        {/* Step 2 */}
+        <CaseSection title="Step 2 · 多轴突变打分">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            同时运行序列适应度模型与结合亲和力模型，对 741 个突变进行双轴扫描。两轴结果出现显著冲突：
+          </p>
+          <div className="mt-4">
+            <DataTable
+              headers={['突变', '序列适应度', '结合 ddG', '结构直觉', '判定']}
+              rows={[
+                ['Y1M', '+5.52（Top 1）', '+1.57（去稳定）', '破坏 N 端锚定', '❌ 否决'],
+                ['F22G', '+3.78（Top 2）', '+0.42（去稳定）', '拆掉疏水核心', '❌ 否决'],
+                ['V23W', '−1.32', '−2.52（增强）', '芳香填充空腔', '✅ 首选'],
+                ['F22K', '+2.22', '−0.82（增强）', '两轴共识', '✅ 备选'],
+              ]}
+            />
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            序列模型将&ldquo;罕见&rdquo;误判为&ldquo;可改进&rdquo;，推荐 Y1M 为全场最高分；但结构模型显示该突变破坏盐桥网络，ddG 为正值（去稳定）。
+            交叉验证原则：<span className="text-white">两轴冲突时以结构轴为准</span>。
+          </p>
+        </CaseSection>
+
+        {/* Step 3 */}
+        <CaseSection title="Step 3 · 结构预测验证">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            对野生型与 Y1M 变体分别提交 MMFold 复合物预测，用实验结构 7RGP 作为基准检验：
+          </p>
+          <div className="mt-4">
+            <DataTable
+              headers={['指标', '野生型', 'Y1M 变体', '含义']}
+              rows={[
+                ['7TM Cα RMSD', '1.17 Å', '1.20 Å', '与冷冻电镜几乎一致'],
+                ['ipTM（界面置信度）', '0.768', '0.753', 'Y1M 略降'],
+                ['肽段 pLDDT', '0.723', '0.714', '逐残基置信度略降'],
+                ['结合模式', 'N 端嵌入口袋', '模式保留', '折叠正确'],
+              ]}
+            />
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            Y1M 三项指标均略降 → 与结构轴&ldquo;否决 Y1M&rdquo;的结论一致 → <span className="text-white">三轴证据链闭环</span>。
+          </p>
+        </CaseSection>
+
+        {/* Step 4 */}
+        <CaseSection title="Step 4 · 从头蛋白设计">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            以受体 ECD 沟槽 11 个热点残基为约束，设计 60–100 残基的全新结合蛋白：
+          </p>
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <CaseStat label="设计长度" value="100" unit="aa" />
+            <CaseStat label="α 螺旋占比" value="~82" unit="%" />
+            <CaseStat label="界面埋藏" value="2,254" unit="Å²" />
+            <CaseStat label="热点命中" value="1/11" />
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            界面规模超过替尔泊肽本身（1,735 Å²），但仅命中 1/11 热点——说明单次生成未精准坐进沟槽中央。
+            迭代策略：换随机种子 / 收紧热点约束 / 用 MMFold 批量筛选 / 湿实验验证。
+          </p>
+        </CaseSection>
+
+        {/* 核心结论 */}
+        <div className="mt-8 rounded-xl border border-border bg-white/[0.03] p-5">
+          <p className="text-sm font-semibold text-white">核心结论</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            本案例展示了&ldquo;序列轴初筛 → 结构轴过滤 → 结构预测验证&rdquo;的三轴工作流。序列模型将&ldquo;罕见&rdquo;误判为&ldquo;可改进&rdquo;，
+            单独使用会推出高风险候选；多轴交叉后才能获得可实验的起点。AI 打分是导航，实验是终点。
+          </p>
+        </div>
+      </div>
+
+      {/* 案例 02 */}
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="eyebrow">02</span>
+          <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">CLDN18.2</span>
+          <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Zolbetuximab</span>
+        </div>
+        <h3 className="mt-4 text-xl font-semibold text-white">胃癌靶点 CLDN18.2 的抗体预测与亲和力成熟</h3>
+        <p className="mt-1 text-sm text-muted-foreground">以 2024 年获批药物为案例，验证 AI 在抗体研发中的预测与设计能力</p>
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+          CLDN18.2 是胃癌高表达靶点，zolbetuximab（Vyloy）于 2024 年获 FDA 批准，联合化疗一线治疗 CLDN18.2 阳性晚期胃癌。
+          本案例以 PDB 9V32（cryo-EM，4.1 Å）为实验基准，在 MoleculeOS 平台上完成抗体结构预测、复合物建模和亲和力成熟突变筛选。
+        </p>
+
+        {/* 关键数据 */}
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <CaseStat label="实验基准" value="PDB 9V32" />
+          <CaseStat label="分辨率" value="4.1" unit="Å" />
+          <CaseStat label="表位残基数" value="11" />
+          <CaseStat label="突变扫描数" value="11,267" />
+        </div>
+
+        {/* Step 1 */}
+        <CaseSection title="Step 1 · 结构解析">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            分析抗体-抗原界面，发现表位核心包含 3 个 CLDN18.1/18.2 变体差异位点，解释了 zolbetuximab 的变体选择性：
+          </p>
+          <div className="mt-4">
+            <DataTable
+              headers={['差异位点', 'CLDN18.2', 'CLDN18.1', '结构作用']}
+              rows={[
+                ['Ala42', 'Ala', 'Ser', '位于表位中心，侧链小，周围有空腔'],
+                ['Asn45', 'Asn', 'Gln', '与轻链 CDR1 Asn31 形成双氢键网络'],
+                ['Glu56', 'Glu', 'Gln', '与重链 Asn103 氢键 + Glu62–Lys36 盐桥'],
+              ]}
+            />
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            Asn45 的双氢键网络在 CLDN18.1（Gln45）上无法形成——<span className="text-white">特异性不是玄学，而是原子层面的接触账</span>。
+          </p>
+        </CaseSection>
+
+        {/* Step 2 */}
+        <CaseSection title="Step 2 · AI 抗体预测">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            仅输入 VH/VL 序列（117/113 aa），MMFold 独立完成 Fv 折叠与复合物组装，与实验 cryo-EM 结构直接比对：
+          </p>
+          <div className="mt-4">
+            <DataTable
+              headers={['组分', 'RMSD（Cα）', '比对残基数', '置信度']}
+              rows={[
+                ['VH（重链可变区）', '0.84 Å', '112/117', 'pLDDT 95 / iPTM 0.95'],
+                ['VL（轻链可变区）', '0.94 Å', '111/113', 'pLDDT 95 / iPTM 0.95'],
+                ['CLDN18.2（抗原）', '1.14 Å', '140/171', '—'],
+                ['表位重现', '覆盖 9/11 残基', '（82%）', '界面化学数量级一致'],
+              ]}
+            />
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            RMSD &lt; 1 Å 意味着：没有实验结构时，AI 可独立折叠抗体可变区，精度足以支撑后续计算。
+            82% 表位重现意味着：复合物预测可用于早期表位作图，对 binder 设计和双抗布局有直接价值。
+          </p>
+        </CaseSection>
+
+        {/* Step 3 */}
+        <CaseSection title="Step 3 · 亲和力打分">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            对复合物全部 11,267 个单点突变打分，4,809 个被预测为稳定化。两个关键发现：
+          </p>
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="rounded-lg border border-border bg-white/[0.03] p-4">
+              <p className="text-xs text-muted-foreground">万能热点</p>
+              <p className="mt-1 text-sm font-medium text-white">Ala42 — 19/19 种替代均增强</p>
+              <p className="mt-1 text-xs text-muted-foreground">ΔΔG −0.31 ~ −2.56 kcal/mol，芳香族最强</p>
+            </div>
+            <div className="rounded-lg border border-border bg-white/[0.03] p-4">
+              <p className="text-xs text-muted-foreground">界面芳香化趋势</p>
+              <p className="mt-1 text-sm font-medium text-white">Phe102→Trp / Asn103→Tyr</p>
+              <p className="mt-1 text-xs text-muted-foreground">大芳香侧链填充 CDR-抗原界面空腔</p>
+            </div>
+          </div>
+        </CaseSection>
+
+        {/* Step 4 */}
+        <CaseSection title="Step 4 · 交叉验证">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            用 Structural Stability 模型对亲和力 top 候选逐一检查，捕获&ldquo;亲和力模型看不到&rdquo;的结构风险：
+          </p>
+          <div className="mt-4">
+            <DataTable
+              headers={['突变', '亲和力 ΔΔG', '稳定性分数', '百分位', '裁决']}
+              rows={[
+                ['VH CDR3 S99→L', '−1.21', '+2.51', '99%', '✅ 唯一双向强阳性'],
+                ['VL CDR3 F102→W', '−1.66', '−0.69', '76%', '⚠️ 轻度矛盾'],
+                ['抗原 A42→T/L', '−2.05 / −1.97', '−0.37 / −0.45', '66–68%', '⚠️ 轻中度矛盾'],
+                ['VH CDR3 N103→Y', '−1.57', '−4.56', '13%', '❌ 强烈矛盾'],
+                ['VH CDR3 N103→W', '−1.21', '−4.88', '11%', '❌ 强烈矛盾'],
+                ['VL CDR1 N31→W', '−1.28', '−3.20', '32%', '❌ 矛盾'],
+              ]}
+            />
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            Asn103 是 CDR3 的氢键枢纽（4 个氢键）。亲和力模型看到&ldquo;换 Tyr 可做 π-堆积&rdquo;，稳定性模型看到&ldquo;环失去锚点、局部坍塌&rdquo;。
+            单看亲和力会推出高风险工程突变——<span className="text-white">多维度交叉是唯一的过滤机制</span>。
+          </p>
+        </CaseSection>
+
+        {/* 核心结论 */}
+        <div className="mt-8 rounded-xl border border-border bg-white/[0.03] p-5">
+          <p className="text-sm font-semibold text-white">核心结论</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            本案例展示了&ldquo;预测 → 验证 → 设计&rdquo;的完整抗体研发链路。11,267 个突变扫描后，
+            仅 VH CDR3 Ser99→Leu 被列为唯一双向强阳性候选（亲和力 −1.21 / 稳定性 +2.51，99% 分位），
+            其余高分项均被降级或否决。实验结构是 AI 的试金石；单维度高分是诱惑，多维度交集才是起点。
+          </p>
+        </div>
       </div>
     </div>
   );
