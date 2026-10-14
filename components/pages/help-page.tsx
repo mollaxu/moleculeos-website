@@ -22,6 +22,7 @@ const coreFeatureSubs = [
   { key: 'affinityOptimization', label: '亲和力优化' },
   { key: 'stabilityDevelopability', label: '稳定性与可开发性' },
   { key: 'deNovoDesign', label: '从头设计' },
+  { key: 'userCases', label: '用户案例' },
 ];
 
 function StructurePredictionContent() {
@@ -79,6 +80,18 @@ function DeNovoDesignContent() {
       <p className="mt-3 text-muted-foreground">围绕同一靶点，探索新的结合分子</p>
       <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
         <p className="text-muted-foreground">从头设计功能介绍内容待补充。</p>
+      </div>
+    </div>
+  );
+}
+
+function UserCasesContent() {
+  return (
+    <div>
+      <h2 className="text-2xl font-semibold tracking-tight text-white">用户案例</h2>
+      <p className="mt-3 text-muted-foreground">真实客户的研发实践与成果</p>
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
+        <p className="text-muted-foreground">用户案例内容待补充。</p>
       </div>
     </div>
   );
@@ -221,6 +234,7 @@ export function HelpPage({ locale, kind = 'home' }: { locale: Locale; kind?: 'ho
           {activeTab === 'coreFeatures' && activeSub === 'affinityOptimization' && <AffinityOptimizationContent />}
           {activeTab === 'coreFeatures' && activeSub === 'stabilityDevelopability' && <StabilityDevelopabilityContent />}
           {activeTab === 'coreFeatures' && activeSub === 'deNovoDesign' && <DeNovoDesignContent />}
+          {activeTab === 'coreFeatures' && activeSub === 'userCases' && <UserCasesContent />}
           {activeTab === 'apiKey' && <ApiKeyContent />}
           {activeTab === 'mcpService' && <McpServiceContent />}
           {activeTab === 'faq' && <FaqContent locale={locale} />}
