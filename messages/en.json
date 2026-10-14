@@ -35,11 +35,15 @@
     "manualDescription": "Complete instructions, screenshots, and videos organized by chapter."
   },
   "nav": {
+    "helpCenter": "Help Center",
+    "coreFeatures": "Core Features",
+    "apiKey": "API Key",
+    "mcpService": "MCP Service",
+    "faq": "FAQ",
     "platform": "Platform",
     "models": "Models",
     "validation": "Validation",
     "pricing": "Pricing",
-    "docs": "Help Center",
     "community": "Community",
     "start": "Start Building",
     "contact": "Talk to Us",

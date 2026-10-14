@@ -35,11 +35,15 @@
     "manualDescription": "完整操作说明、界面截图与视频，按章节查阅。"
   },
   "nav": {
+    "helpCenter": "帮助中心",
+    "coreFeatures": "核心功能",
+    "apiKey": "API key",
+    "mcpService": "MCP服务",
+    "faq": "FAQ",
     "platform": "平台",
     "models": "模型",
     "validation": "验证与案例",
     "pricing": "定价",
-    "docs": "帮助中心",
     "community": "社区",
     "start": "开始工作",
     "contact": "预约沟通",

@@ -170,4 +170,81 @@ git log --oneline --follow <文件路径>
 
 ---
 
+### 43. 导航栏新增"核心功能"tab
+
+- **文件位置**:
+  - `lib/site-config.ts`
+  - `messages/zh.json`
+  - `messages/en.json`
+- **修改内容**:
+  - 在导航栏首位新增 `features`（核心功能）tab
+  - 链接指向 `/platform`
+  - 中英文翻译已同步添加
+- **当前导航顺序**: 核心功能 → 平台 → 验证与案例 → 定价 → 帮助中心 → 社区
+
+---
+
+### 44. 导航栏重构：核心功能 → Help center
+
+- **文件位置**:
+  - `lib/site-config.ts`
+  - `components/layout/header.tsx`
+  - `messages/zh.json`
+  - `messages/en.json`
+- **修改内容**:
+  1. 导航栏首个 tab 从"核心功能"改为 **"Help center"**（英文显示）
+  2. 移除原来的"帮助中心"（docs）导航项，功能合并到 Help center
+  3. Help center 下拉菜单包含 4 个子类目：
+     - **核心功能** → /platform
+     - **API key** → /help/api
+     - **MCP服务** → /help
+     - **FAQ** → /help/faq
+  4. header.tsx 中下拉菜单从两栏平台任务/模型改为单栏帮助子类目
+  5. 路由高亮逻辑适配新的首个导航项
+- **当前导航顺序**: 帮助中心 → 定价 → 社区
+
+### 45. 移除"平台"和"验证与案例"导航 tab
+
+- **文件位置**: `lib/site-config.ts`
+- **修改内容**:
+  - 从导航栏移除 `platform`（平台）和 `validation`（验证与案例）两项
+  - 这两个页面的入口仍保留在 Help center 下拉菜单和页脚链接中
+- **当前导航顺序**: Help center → 定价 → 社区
+
+### 46. 帮助中心页面重构：侧边导航 + 内容区
+
+- **文件位置**:
+  - `components/pages/help-page.tsx`
+  - `messages/zh.json`
+  - `messages/en.json`
+- **修改内容**:
+  1. `/help` 首页从多卡片中间页改为 **左侧侧边导航 + 右侧内容区** 布局
+  2. 侧边导航包含 4 个 tab：
+     - **核心功能**（默认选中）：展示 5 个能力方向（结构预测、mmetrics、亲和力优化、稳定性与可开发性、从头设计）
+     - **API Key**：占位页面，提示文档即将开放
+     - **MCP 服务**：占位页面，提示接入方案开发中
+     - **FAQ**：常见问题手风琴 + 数据安全与 IP 板块（`EnterpriseSection`）
+  3. 原有子页面（`/help/getting-started`、`/help/manual`、`/help/faq`、`/help/api`、`/help/changelog`）逻辑保留，点击返回可回到帮助中心首页
+  4. 新增 `nav` 翻译键：`coreFeatures`、`apiKey`、`mcpService`
+
+### 47. 导航栏"帮助中心"移除下拉菜单
+
+- **文件位置**: `components/layout/header.tsx`
+- **修改内容**:
+  1. 移除帮助中心 tab 的鼠标悬停下拉菜单（原包含核心功能/API key/MCP服务/FAQ 子项）
+  2. 点击"帮助中心"直接导航到 `/help` 页面
+  3. 在 `/help` 页面内通过左侧侧边导航切换子类目
+  4. 清理未使用的 `ChevronDown` 图标、`menuOpen`/`menuHover` state、下拉动画逻辑
+
+### 48. 代码质量修复
+
+- **文件位置**:
+  - `components/pages/help-page.tsx`
+  - `components/sections/testimonials-section.tsx`
+- **修改内容**:
+  - 移除 help-page 中未使用的 `ArrowRight`、`manifest` 导入
+  - 修复 testimonials-section 中未转义的双引号字符（JSX `"` → `&ldquo;` / `&rdquo;`）
+
+---
+
 *文档最后更新: 2026-10-14*

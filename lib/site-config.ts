@@ -3,11 +3,15 @@ export const SITE_CONFIG = {
   platformUrl: 'https://mos.moleculemind.com/',
   companyUrl: 'https://moleculemind.com/',
   nav: [
-    { key: 'platform', href: '/platform' },
-    { key: 'validation', href: '/validation' },
+    { key: 'helpCenter', href: '/help' },
     { key: 'pricing', href: '/pricing' },
-    { key: 'docs', href: '/help' },
     { key: 'community', href: '/community' },
+  ],
+  helpMenu: [
+    { key: 'coreFeatures', href: '/platform' },
+    { key: 'apiKey', href: '/help/api' },
+    { key: 'mcpService', href: '/help' },
+    { key: 'faq', href: '/help/faq' },
   ],
   platformMenu: {
     tasks: [
@@ -26,6 +30,7 @@ export const SITE_CONFIG = {
   },
 } as const;
 
+export type HelpMenuItem = (typeof SITE_CONFIG.helpMenu)[number];
 export type PlatformSlug = (typeof SITE_CONFIG.platformMenu.tasks)[number][1];
 
 export type Locale = 'zh' | 'en';
