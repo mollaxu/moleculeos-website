@@ -30,14 +30,12 @@ const coreFeatureSubs = [
 function Case1Content() {
   return (
     <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">提出目标</h2>
-      <p className="mt-3 text-muted-foreground">让分析与计算围绕任务展开</p>
+      <h2 className="text-3xl font-semibold tracking-tight text-white whitespace-nowrap">提出目标，让分析与计算围绕任务展开</h2>
       <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex items-center gap-3">
             <span className="eyebrow">Case 1</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Mocha</span>
           </div>
-          <h3 className="mt-3 text-lg font-semibold text-white">提出目标，让分析与计算围绕任务展开</h3>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             你希望优化一份抗体，却需要先准备结构、检查界面、评估突变，再整理各步结果。通过 Mocha，可以直接描述研究目标与约束，由它拆解任务、分析需要调用的模型，并在完成后整理候选、评分与推荐依据。你可以查看任务过程，也可以打开原始结果继续检查。
           </p>
@@ -58,15 +56,13 @@ function Case1Content() {
 function Case2Content() {
   return (
     <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">序列到结构</h2>
-      <p className="mt-3 text-muted-foreground">为后续分析建立起点</p>
+      <h2 className="text-3xl font-semibold tracking-tight text-white whitespace-nowrap">从序列到结构，为后续分析建立起点</h2>
       <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex items-center gap-3">
             <span className="eyebrow">Case 2</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">MMFold</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">蛋白管理</span>
           </div>
-          <h3 className="mt-3 text-lg font-semibold text-white">从序列到结构，为后续分析建立起点</h3>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             已有抗体与靶点序列，却还没有可以用于分析的结构。通过 MMFold，可以从序列发起结构预测，将结果载入 MOS 项目，继续查看分子形态、定位残基，并与其他结构进行比较。已有结构时，也可以直接上传，或通过 PDB ID 加载到项目。
           </p>
@@ -87,14 +83,12 @@ function Case2Content() {
 function Case3Content() {
   return (
     <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">分子概览</h2>
-      <p className="mt-3 text-muted-foreground">找到值得关注的研究信息</p>
+      <h2 className="text-3xl font-semibold tracking-tight text-white whitespace-nowrap">围绕同一分子，找到值得关注的研究信息</h2>
       <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex items-center gap-3">
             <span className="eyebrow">Case 3</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">MMetrics</span>
           </div>
-          <h3 className="mt-3 text-lg font-semibold text-white">围绕同一分子，找到值得关注的研究信息</h3>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             结构已经拿到，接下来需要确认：各条链分别是什么，哪些区域值得关注，还有哪些同源信息可以参考。MMetrics 围绕载入的复合物，组织分子概述、同源参考、功能区域、互作关系与突变评分，让你从整体信息进入具体位置，逐步建立对研究对象的理解。
           </p>
@@ -119,14 +113,12 @@ function Case3Content() {
 function Case4Content() {
   return (
     <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">同源参照</h2>
-      <p className="mt-3 text-muted-foreground">为改造补充依据</p>
+      <h2 className="text-3xl font-semibold tracking-tight text-white whitespace-nowrap">找到同源参照，为改造补充依据</h2>
       <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex items-center gap-3">
             <span className="eyebrow">Case 4</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">SeqSim Search</span>
           </div>
-          <h3 className="mt-3 text-lg font-semibold text-white">找到同源参照，为改造补充依据</h3>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             准备改造一段序列时，你希望知道相关蛋白提供了哪些参考：哪些位置保持一致，哪些位置存在变化，还有哪些结构或功能信息值得进一步查阅。SeqSim Search 支持从序列或项目中的指定链发起搜索，再通过筛选、多序列比对与来源访问，找到适合当前问题的参照。
           </p>
@@ -147,8 +139,7 @@ function Case4Content() {
 function Case5Content() {
   return (
     <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">位点定位</h2>
-      <p className="mt-3 text-muted-foreground">从结构差异到具体互作</p>
+      <h2 className="text-3xl font-semibold tracking-tight text-white whitespace-nowrap">从结构差异到具体互作，定位值得检查的位点</h2>
       <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex flex-wrap items-center gap-3">
             <span className="eyebrow">Case 5</span>
@@ -157,7 +148,6 @@ function Case5Content() {
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Distance</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Annotation</span>
           </div>
-          <h3 className="mt-3 text-lg font-semibold text-white">从结构差异到具体互作，定位值得检查的位点</h3>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             参考信息已经找到，接下来需要把注意力落到具体位置：不同结构之间，哪些局部区域存在差异？候选位点周围有哪些残基，又参与了哪些互作？在 MOS 中，可以对齐结构、检查空间邻域与非共价互作，再将重点位置和观察记录保存在项目中。
           </p>
@@ -192,8 +182,7 @@ function Case5Content() {
 function Case6Content() {
   return (
     <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">改造方案</h2>
-      <p className="mt-3 text-muted-foreground">比较每一种改造方案</p>
+      <h2 className="text-3xl font-semibold tracking-tight text-white whitespace-nowrap">把分析依据转化为候选，比较每一种改造方案</h2>
       <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex flex-wrap items-center gap-3">
             <span className="eyebrow">Case 6</span>
@@ -201,7 +190,6 @@ function Case6Content() {
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Mutation Scoring</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Protein Redesign</span>
           </div>
-          <h3 className="mt-3 text-lg font-semibold text-white">把分析依据转化为候选，比较每一种改造方案</h3>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             有了结构、同源参照和重点位点，下一步是提出具体的候选替换，并比较它们在不同维度中的表现。MOS 提供序列、结构和进化维度的突变评分，也支持结合亲和力突变评估。围绕研究目标，可以通过 Mocha 获得候选推荐与理由，或指定局部范围开展序列重设计。
           </p>
@@ -222,8 +210,7 @@ function Case6Content() {
 function Case7Content() {
   return (
     <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">团队协作</h2>
-      <p className="mt-3 text-muted-foreground">让团队继续研究</p>
+      <h2 className="text-3xl font-semibold tracking-tight text-white whitespace-nowrap">把结果与观察留在项目，让团队继续研究</h2>
       <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex flex-wrap items-center gap-3">
             <span className="eyebrow">Case 7</span>
@@ -232,7 +219,6 @@ function Case7Content() {
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Annotation</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">项目分享</span>
           </div>
-          <h3 className="mt-3 text-lg font-semibold text-white">把结果与观察留在项目，让团队继续研究</h3>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             候选方案准备完成后，团队还需要检查位置、讨论依据，并确定下一轮实验。MOS 将相关蛋白、工具与任务组织在项目中；你可以查看或下载结果文件，将关键观察记录在位点上，再邀请成员进入项目继续检查。
           </p>
