@@ -18,25 +18,21 @@ const helpNavItems = [
 ];
 
 const coreFeatureSubs = [
-  { key: 'structurePrediction', label: '结构预测' },
-  { key: 'mmetrics', label: 'mmetrics' },
-  { key: 'affinityOptimization', label: '亲和力优化' },
-  { key: 'stabilityDevelopability', label: '稳定性与可开发性' },
-  { key: 'deNovoDesign', label: '从头设计' },
+  { key: 'case1', label: '提出目标' },
+  { key: 'case2', label: '序列到结构' },
+  { key: 'case3', label: '分子概览' },
+  { key: 'case4', label: '同源参照' },
+  { key: 'case5', label: '位点定位' },
+  { key: 'case6', label: '改造方案' },
+  { key: 'case7', label: '团队协作' },
 ];
 
-function CoreFeaturesContent() {
+function Case1Content() {
   return (
     <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">核心功能</h2>
-      <p className="mt-3 text-muted-foreground">从一个研发问题，到一组有依据的候选方案</p>
-      <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-        把研究对象放进项目，围绕目标开展分析。你可以向 Mocha 描述研发需求，由它拆解任务、调用模型并整理结果；也可以直接检查结构、选择残基、发起计算，再将获得的序列、结构与评分用于后续设计。项目工作台将这些操作组织在同一研究过程中。
-      </p>
-
-      <div className="mt-10 flex flex-col gap-10">
-        {/* Case 1 */}
-        <div className="rounded-2xl border border-border bg-white/[0.02] p-8">
+      <h2 className="text-2xl font-semibold tracking-tight text-white">提出目标</h2>
+      <p className="mt-3 text-muted-foreground">让分析与计算围绕任务展开</p>
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex items-center gap-3">
             <span className="eyebrow">Case 1</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Mocha</span>
@@ -54,10 +50,17 @@ function CoreFeaturesContent() {
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             提交后，通过 Task 查看运行状态、时长和单项任务详情。任务完成后，先阅读主要发现与候选推荐，再从 Workspace 查找报告、数据表和结构文件。
           </p>
-        </div>
+      </div>
+    </div>
+  );
+}
 
-        {/* Case 2 */}
-        <div className="rounded-2xl border border-border bg-white/[0.02] p-8">
+function Case2Content() {
+  return (
+    <div>
+      <h2 className="text-2xl font-semibold tracking-tight text-white">序列到结构</h2>
+      <p className="mt-3 text-muted-foreground">为后续分析建立起点</p>
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex items-center gap-3">
             <span className="eyebrow">Case 2</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">MMFold</span>
@@ -76,10 +79,17 @@ function CoreFeaturesContent() {
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             选中其中一份结构，点击序列上的残基，三维视图中的对应位置会同步高亮。接下来，就可以围绕同一个对象开展区域与位点分析。
           </p>
-        </div>
+      </div>
+    </div>
+  );
+}
 
-        {/* Case 3 */}
-        <div className="rounded-2xl border border-border bg-white/[0.02] p-8">
+function Case3Content() {
+  return (
+    <div>
+      <h2 className="text-2xl font-semibold tracking-tight text-white">分子概览</h2>
+      <p className="mt-3 text-muted-foreground">找到值得关注的研究信息</p>
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex items-center gap-3">
             <span className="eyebrow">Case 3</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">MMetrics</span>
@@ -101,10 +111,17 @@ function CoreFeaturesContent() {
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             点击区域名称，结构中的对应区域会高亮；点击单个残基，可以进一步定位。此时先建立分子信息概览，再根据具体问题进入同源搜索、互作检查或突变评估。
           </p>
-        </div>
+      </div>
+    </div>
+  );
+}
 
-        {/* Case 4 */}
-        <div className="rounded-2xl border border-border bg-white/[0.02] p-8">
+function Case4Content() {
+  return (
+    <div>
+      <h2 className="text-2xl font-semibold tracking-tight text-white">同源参照</h2>
+      <p className="mt-3 text-muted-foreground">为改造补充依据</p>
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex items-center gap-3">
             <span className="eyebrow">Case 4</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">SeqSim Search</span>
@@ -122,10 +139,17 @@ function CoreFeaturesContent() {
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             任务完成后，将结果加载到项目，查看匹配指标并展开命中序列。结果过多时，使用 Filter 缩小范围；勾选多个相关蛋白，点击 Align，检查感兴趣区域在不同序列中的变化。需要核对背景信息时，通过 Reference 回到源数据库。
           </p>
-        </div>
+      </div>
+    </div>
+  );
+}
 
-        {/* Case 5 */}
-        <div className="rounded-2xl border border-border bg-white/[0.02] p-8">
+function Case5Content() {
+  return (
+    <div>
+      <h2 className="text-2xl font-semibold tracking-tight text-white">位点定位</h2>
+      <p className="mt-3 text-muted-foreground">从结构差异到具体互作</p>
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex flex-wrap items-center gap-3">
             <span className="eyebrow">Case 5</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Superimpose</span>
@@ -160,10 +184,17 @@ function CoreFeaturesContent() {
               </div>
             </div>
           </div>
-        </div>
+      </div>
+    </div>
+  );
+}
 
-        {/* Case 6 */}
-        <div className="rounded-2xl border border-border bg-white/[0.02] p-8">
+function Case6Content() {
+  return (
+    <div>
+      <h2 className="text-2xl font-semibold tracking-tight text-white">改造方案</h2>
+      <p className="mt-3 text-muted-foreground">比较每一种改造方案</p>
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex flex-wrap items-center gap-3">
             <span className="eyebrow">Case 6</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Mocha</span>
@@ -183,10 +214,17 @@ function CoreFeaturesContent() {
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             将拟改造范围和研究约束明确提交给 Mocha，检查它给出的候选位置、评分与推荐理由。若需要对指定区域重新设计序列，可以发起 Protein Redesign，在任务详情的 Input Data 中核对设计残基，并从 Output Data 下载生成的 FASTA 序列。
           </p>
-        </div>
+      </div>
+    </div>
+  );
+}
 
-        {/* Case 7 */}
-        <div className="rounded-2xl border border-border bg-white/[0.02] p-8">
+function Case7Content() {
+  return (
+    <div>
+      <h2 className="text-2xl font-semibold tracking-tight text-white">团队协作</h2>
+      <p className="mt-3 text-muted-foreground">让团队继续研究</p>
+      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
           <div className="flex flex-wrap items-center gap-3">
             <span className="eyebrow">Case 7</span>
             <span className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground">Task</span>
@@ -215,71 +253,11 @@ function CoreFeaturesContent() {
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             由有权分享项目的成员打开 Share，选择公司内成员，设置 Read／Edit 后邀请加入。后续可以根据工作需要调整成员权限。项目中的位点注释可供有权访问的成员查看，具有相应编辑权限的成员可以继续维护。
           </p>
-        </div>
       </div>
     </div>
   );
 }
 
-function StructurePredictionContent() {
-  return (
-    <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">结构预测</h2>
-      <p className="mt-3 text-muted-foreground">从序列到结构，为分子设计建立依据</p>
-      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
-        <p className="text-muted-foreground">结构预测功能介绍内容待补充。</p>
-      </div>
-    </div>
-  );
-}
-
-function MmetricsContent() {
-  return (
-    <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">mmetrics</h2>
-      <p className="mt-3 text-muted-foreground">从序列到指标画像，为后续判断标出检查点</p>
-      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
-        <p className="text-muted-foreground">mmetrics 功能介绍内容待补充。</p>
-      </div>
-    </div>
-  );
-}
-
-function AffinityOptimizationContent() {
-  return (
-    <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">亲和力优化</h2>
-      <p className="mt-3 text-muted-foreground">优化亲和力，让突变选择有据可依</p>
-      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
-        <p className="text-muted-foreground">亲和力优化功能介绍内容待补充。</p>
-      </div>
-    </div>
-  );
-}
-
-function StabilityDevelopabilityContent() {
-  return (
-    <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">稳定性与可开发性</h2>
-      <p className="mt-3 text-muted-foreground">兼顾结合与可开发性，筛选更均衡的候选</p>
-      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
-        <p className="text-muted-foreground">稳定性与可开发性功能介绍内容待补充。</p>
-      </div>
-    </div>
-  );
-}
-
-function DeNovoDesignContent() {
-  return (
-    <div>
-      <h2 className="text-2xl font-semibold tracking-tight text-white">从头设计</h2>
-      <p className="mt-3 text-muted-foreground">围绕同一靶点，探索新的结合分子</p>
-      <div className="mt-10 rounded-2xl border border-border bg-white/[0.02] p-8">
-        <p className="text-muted-foreground">从头设计功能介绍内容待补充。</p>
-      </div>
-    </div>
-  );
-}
 
 function CaseStat({ label, value, unit }: { label: string; value: string; unit?: string }) {
   return (
@@ -622,7 +600,7 @@ export function HelpPage({ locale, kind = 'home' }: { locale: Locale; kind?: 'ho
   const docs = useTranslations('docsPage');
   const ui = useTranslations('manualUI');
   const [activeTab, setActiveTab] = useState('coreFeatures');
-  const [activeSub, setActiveSub] = useState('');
+  const [activeSub, setActiveSub] = useState('case1');
 
   const entries = [
     { key: 'getting-started', title: docs('quickStart'), description: ui('quickStartDescription'), Icon: Zap },
@@ -661,9 +639,7 @@ export function HelpPage({ locale, kind = 'home' }: { locale: Locale; kind?: 'ho
                 <div key={item.key}>
                   <button
                     onClick={() => {
-                      if (isCoreFeatures && isActive && activeSub) {
-                        setActiveSub('');
-                      } else {
+                      if (!isActive) {
                         setActiveTab(item.key);
                       }
                     }}
@@ -703,12 +679,13 @@ export function HelpPage({ locale, kind = 'home' }: { locale: Locale; kind?: 'ho
 
         {/* 中间内容区 */}
         <main>
-          {activeTab === 'coreFeatures' && !activeSub && <CoreFeaturesContent />}
-          {activeTab === 'coreFeatures' && activeSub === 'structurePrediction' && <StructurePredictionContent />}
-          {activeTab === 'coreFeatures' && activeSub === 'mmetrics' && <MmetricsContent />}
-          {activeTab === 'coreFeatures' && activeSub === 'affinityOptimization' && <AffinityOptimizationContent />}
-          {activeTab === 'coreFeatures' && activeSub === 'stabilityDevelopability' && <StabilityDevelopabilityContent />}
-          {activeTab === 'coreFeatures' && activeSub === 'deNovoDesign' && <DeNovoDesignContent />}
+          {activeTab === 'coreFeatures' && activeSub === 'case1' && <Case1Content />}
+          {activeTab === 'coreFeatures' && activeSub === 'case2' && <Case2Content />}
+          {activeTab === 'coreFeatures' && activeSub === 'case3' && <Case3Content />}
+          {activeTab === 'coreFeatures' && activeSub === 'case4' && <Case4Content />}
+          {activeTab === 'coreFeatures' && activeSub === 'case5' && <Case5Content />}
+          {activeTab === 'coreFeatures' && activeSub === 'case6' && <Case6Content />}
+          {activeTab === 'coreFeatures' && activeSub === 'case7' && <Case7Content />}
           {activeTab === 'userCases' && <UserCasesContent />}
           {activeTab === 'apiKey' && <ApiKeyContent />}
           {activeTab === 'mcpService' && <McpServiceContent />}
